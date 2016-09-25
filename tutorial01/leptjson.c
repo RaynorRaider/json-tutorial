@@ -43,12 +43,12 @@ static int lept_parse_true(lept_context* c, lept_value* v){
 }
 
 static int lept_parse_root_not_singular(lept_context* c){
-    char *p = c->json;
-    while (*p != ' ' || *p != '\t' || *p != '\n' || *p != '\r')
+    const char *p = c->json;
+    while (*p != ' ' && *p != '\t' && *p != '\n' && *p != '\r')
         p++;
     while (*p == ' ' || *p == '\t' || *p == '\n' || *p == '\r')
         p++;
-    (*p=='\0')?return 0 : return 1;
+    return (*p=='\0')? 0 : 1;
 }
     
 
